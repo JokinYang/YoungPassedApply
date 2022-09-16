@@ -14,16 +14,17 @@
 var body = $response.body;
 var obj = JSON.parse(body);
 
-var data = obj['entities']['data']
+var data = obj['entities'][0]['data'];
 
 var today = new Date();
 var m = today.getMonth()<10?"0"+today.getMonth():today.getMonth();
 var d = today.getDay()<10?"0"+today.getDay():today.getDay();
 var date = today.getFullYear()+"-"+m+"-"+d+" ";
 
-data['fieldEwm'] = "审批通过"
-data['fieldOutOfTime'] = date+"06:00"
-data['fieldBackToSchoolTime'] = date+"23:00"
+data['fieldEwm'] = "审批通过";
+data['fieldOutOfTime'] = date+"06:00";
+data['fieldBackToSchoolTime'] = date+"23:00";
 
+console.log("You have passed the apply! ");
 
 $done(JSON.stringify(obj));
